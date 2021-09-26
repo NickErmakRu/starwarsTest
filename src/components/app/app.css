@@ -1,0 +1,22 @@
+.mainBlock {
+  width: 100%;
+  padding: 0 1rem; 
+  margin: 0;
+}
+
+.short {
+  max-height: 320px !important;
+  overflow-y: scroll;
+}
+
+.short::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(42, 42, 46);
+  border-radius: 5px;
+  height: 200px;
+}
+
+.short::-webkit-scrollbar-thumb {
+  background: #7a77a5;
+  border-radius: 10px;
+}
