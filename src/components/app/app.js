@@ -10,6 +10,8 @@ import ItemDetails from '../itemDetails';
 import { Record } from '../itemDetails/itemDetails';
 import ItemList from '../itemList/itemList';
 
+import { SwapiServiceProvider } from '../swapi-service-context/swapiServiceContext';
+
 import {
   PersonList,
   PlanetList,
@@ -61,23 +63,23 @@ export default class App extends Component {
     );
 
     return (
-      <div className="stardb-app">
-        <Header />
-        <RandomPlanet/>
+      <SwapiServiceProvider value={this.swapiService}>
+        <div className="stardb-app">
+          <Header />
+          <RandomPlanet/>
 
-        {/* <Row 
-          left={<PersonList>{({name}) => <span>{name}</span>}</PersonList>} 
-          right={<PersonDetails itemId={11} />} 
-        /> */}
+          <Row 
+            left={<PersonList />} 
+            right={<PersonDetails itemId={5} />} 
+          />
 
-        <PersonDetails itemId={11} />
-        <PlanetDetails itemId={5} />
-        <StarshipDetails itemId={9} />
+          <Row 
+            left={<StarshipList />} 
+            right={<StarshipDetails itemId={9} />} 
+          />
 
-        <PersonList />
-        <StarshipList />
-
-      </div>
+        </div>
+      </SwapiServiceProvider>
     );
   }
 }
