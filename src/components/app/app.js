@@ -8,7 +8,6 @@ import SwapiService from '../../services/swapi-service';
 import Row from '../row';
 import ItemDetails from '../itemDetails';
 import { Record } from '../itemDetails/itemDetails';
-import ItemList from '../itemList/itemList';
 
 import { SwapiServiceProvider } from '../swapi-service-context/swapiServiceContext';
 
@@ -23,10 +22,8 @@ import {
 
 export default class App extends Component {
 
-  swapiService = new SwapiService();
-
   state = {
-    
+    swapiService: new SwapiService()
   };
 
   render() {
@@ -35,10 +32,8 @@ export default class App extends Component {
       getPerson, 
       getStarship, 
       getPersonImage, 
-      getStarshipImage,
-      getAllPeople,
-      getAllStarships
-    } = this.swapiService;
+      getStarshipImage
+    } = this.state.swapiService;
 
     const personDetails = (
       <ItemDetails 
@@ -63,7 +58,7 @@ export default class App extends Component {
     );
 
     return (
-      <SwapiServiceProvider value={this.swapiService}>
+      <SwapiServiceProvider value={this.state.swapiService}>
         <div className="stardb-app">
           <Header />
           <RandomPlanet/>
