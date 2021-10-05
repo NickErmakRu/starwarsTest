@@ -1,30 +1,25 @@
-import React from 'react';
-import SwapiService from '../../services/swapi-service';
+import React, { Component } from 'react';
+import { PersonDetails, PersonList } from '../sw-components';
 import Row from '../row';
 
-import './peoplePage.css';
-
-export default class PeoplePage extends React.Component {
-
-  swapiService = new SwapiService();
+export default class PeoplePage extends Component {
 
   state = {
-    selectedItem: 2,
+    selectedItem: 5
   };
 
-  onItemSelected = (selectedPerson) => {
-    this.setState({selectedPerson})
+  onItemSelected = (selectedItem) => {
+    this.setState({ selectedItem });
   };
-  
+
   render() {
-
-    const {selectedItem} = this.state;
+    const { selectedItem } = this.state;
 
     return (
-      <Row 
+      <Row
         left={<PersonList onItemSelected={this.onItemSelected} />}
-        right={<PersonDetails itemId={selectedItem} />}
-      />
+        right={<PersonDetails itemId={selectedItem} />} />
     );
   }
+
 }
