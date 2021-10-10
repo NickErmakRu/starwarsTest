@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { SwapiServiceProvider } from '../swapi-service-context/swapiServiceContext';
 import Header from '../header';
 import RandomPlanet from '../randomPlanet';
 
-import './app.css';
 import SwapiService from '../../services/swapi-service';
-import Row from '../row';
-import ItemDetails from '../itemDetails';
-import PeoplePage from '../peoplePage';
-import { Record } from '../itemDetails/itemDetails';
+import {PeoplePage, PlanetsPage, StarshipsPage} from '../peoplePage';
 
-import { SwapiServiceProvider } from '../swapi-service-context/swapiServiceContext';
-
-import {
-  PersonList,
-  PlanetList,
-  StarshipList,
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails
-} from '../sw-components';
+import './app.css';
 
 export default class App extends Component {
 
@@ -29,44 +17,22 @@ export default class App extends Component {
 
   render() {
 
-    const {
-      getPerson, 
-      getStarship, 
-      getPersonImage, 
-      getStarshipImage
-    } = this.state.swapiService;
-
-    const personDetails = (
-      <ItemDetails 
-        itemId={11} 
-        getData={getPerson}
-        getImageUrl={getPersonImage}
-      >
-        <Record field='gender' label='Gender' />
-        <Record field='birthYear' label='Birth year' />
-      </ItemDetails>
-    );
-    const starshipDetails = (
-      <ItemDetails 
-        itemId={5} 
-        getData={getStarship}
-        getImageUrl={getStarshipImage}
-      >
-        <Record field='model' label='Model' />
-        <Record field='length' label='Length' />
-        <Record field='crew' label='Crew' />
-      </ItemDetails>
-    );
-
     return (
       <SwapiServiceProvider value={this.state.swapiService}>
-        <div className="stardb-app">
-          <Header />
-          <RandomPlanet/>
-
-          <PeoplePage />
-
-        </div>
+        <Router>
+          <div className="stardb-app">
+            <Header />
+            <RandomPlanet/>
+            <Route 
+              path='/' 
+              exact
+              render={() => <h2 style={{ margin: '40px'}}>Welcome to StarDB View</h2>} 
+            />
+            <Route path='/people' component={PeoplePage} />
+            <Route path='/planets' component={PlanetsPage} />
+            <Route path='/starships' component={StarshipsPage} />
+          </div>
+        </Router>
       </SwapiServiceProvider>
     );
   }
