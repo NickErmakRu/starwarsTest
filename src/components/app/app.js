@@ -8,6 +8,7 @@ import SwapiService from '../../services/swapi-service';
 import {PeoplePage, PlanetsPage, StarshipsPage} from '../peoplePage';
 
 import './app.css';
+import { StarshipDetails } from '../sw-components';
 
 export default class App extends Component {
 
@@ -30,7 +31,22 @@ export default class App extends Component {
             />
             <Route path='/people' component={PeoplePage} />
             <Route path='/planets' component={PlanetsPage} />
-            <Route path='/starships' component={StarshipsPage} />
+            <Route 
+              path='/starships'   
+              exact
+              component={StarshipsPage} 
+            />
+            <Route 
+              path='/starships/:id'
+              render={({match}) => {
+                const {id} = match.params;
+                return (
+                  <div style={{margin: '50px'}}>
+                    <StarshipDetails itemId={id} />
+                  </div>
+                )
+              }}
+            />
           </div>
         </Router>
       </SwapiServiceProvider>
