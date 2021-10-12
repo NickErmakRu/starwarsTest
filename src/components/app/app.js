@@ -5,7 +5,7 @@ import Header from '../header';
 import RandomPlanet from '../randomPlanet';
 
 import SwapiService from '../../services/swapi-service';
-import {PeoplePage, PlanetsPage, StarshipsPage} from '../peoplePage';
+import {LoginPage, PeoplePage, PlanetsPage, SecretPage, StarshipsPage} from '../peoplePage';
 
 import './app.css';
 import { StarshipDetails } from '../sw-components';
@@ -13,7 +13,14 @@ import { StarshipDetails } from '../sw-components';
 export default class App extends Component {
 
   state = {
-    swapiService: new SwapiService()
+    swapiService: new SwapiService(),
+    isLoggedIn: false
+  };
+
+  onLogin = () => {
+    this.setState({
+      isLoggedIn: true
+    });
   };
 
   render() {
@@ -29,7 +36,7 @@ export default class App extends Component {
               exact
               render={() => <h2 style={{ margin: '40px'}}>Welcome to StarDB View</h2>} 
             />
-            <Route path='/people' component={PeoplePage} />
+            <Route path='/people/:id?' component={PeoplePage} />
             <Route path='/planets' component={PlanetsPage} />
             <Route 
               path='/starships'   
@@ -46,6 +53,18 @@ export default class App extends Component {
                   </div>
                 )
               }}
+            />
+            <Route 
+              path='/login' 
+              render={() => 
+                <LoginPage isLoggedIn={this.state.isLoggedIn} onLogin={this.onLogin} />
+              }
+            />
+            <Route 
+              path='/secret' 
+              render={() => 
+                <SecretPage isLoggedIn={this.state.isLoggedIn} />
+              }
             />
           </div>
         </Router>
