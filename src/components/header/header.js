@@ -8,6 +8,9 @@ const Header = () => {
       <h3>
         <Link to='/'>Star DB</Link>
       </h3>
+      <h3>
+        <Link to='/'>CHECKOUT</Link>
+      </h3>
       <ul className='d-flex'>
         <li>
           <Link to='/people/'>People</Link>
