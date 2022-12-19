@@ -1,0 +1,123 @@
+.shop-header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shop-header .logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  padding-left: 1rem;
+}
+
+.shop-header .shopping-cart {
+  align-self: center;
+  font-size: 1.2rem;
+}
+
+.shop-header .shopping-cart .cart-icon {
+  font-size: 1.2rem;
+  color: cadetblue;
+  margin-right: 10px;
+}
+
+.activeBorder {
+    position: relative;
+    background: #337AB7;
+    z-index: 0;
+    width: 200px;
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;     
+}
+.activeBorder::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    /* left: -50%;
+    top: -50%; */
+    width: 200%;
+    height: 200%;
+    background-color: #BFE2FF;
+    /* background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: 
+      linear-gradient(#BFE2FF, #BFE2FF), 
+      linear-gradient(#337AB7, #337AB7), 
+      linear-gradient(#BFE2FF, #BFE2FF), 
+      linear-gradient(#337AB7, #337AB7); */
+    animation: active-border 12s linear infinite;
+}
+.activeBorder::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 3px;
+    top: 3px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    background: white;
+    border-radius: 2px;
+}
+@keyframes active-border {
+  50% {
+    transform: rotate(1turn);
+  }
+}
+
+.activeBorder1 {
+  position: relative;
+  background: #337AB7;
+  z-index: 0;
+  width: 200px;
+  height: 28px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;     
+}
+.activeBorder1::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  width: 200px;
+  height: 200px;
+  background-color: #BFE2FF;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: 
+    linear-gradient(#BFE2FF, #BFE2FF), 
+    linear-gradient(#BFE2FF, #BFE2FF), 
+    linear-gradient(#BFE2FF, #BFE2FF), 
+    linear-gradient(#337AB7, #337AB7);
+  border-radius: 50%;
+  animation: active-border1 96s linear infinite;
+}
+.activeBorder1::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 3px;
+  top: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  background: white;
+  border-radius: 2px;
+}
+@keyframes active-border1 {
+  50% {
+    transform: rotate(3600deg);
+  }
+}
